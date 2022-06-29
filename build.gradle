@@ -1,0 +1,70 @@
+plugins {
+  id 'java-library'
+}
+
+group = 'org.swimos'
+description = 'Swim Kafka Connector'
+version = property('application.version')
+ext.swimVersion = project.property('swim.version')
+
+
+dependencies {
+  api group: 'org.swimos', name: 'swim-api', version: swimVersion
+  api group: 'org.swimos', name: 'swim-server', version: swimVersion
+  api group: 'org.swimos', name: 'swim-client', version: swimVersion
+  implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.0'
+  implementation group: 'org.apache.kafka', name: 'connect-api', version: '3.2.0'
+  testImplementation 'org.testng:testng:7.4.0'
+}
+
+repositories {
+  mavenCentral()
+}
+
+compileJava {
+  options.compilerArgs += ['-Xlint:all']
+  options.encoding = 'UTF-8'
+}
+
+test {
+  useTestNG()
+  scanForTestClasses = false
+  include '**/*Spec.class'
+  maxHeapSize = '1024m'
+
+  testLogging {
+    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+    exceptionFormat 'full'
+    displayGranularity = 4
+  }
+
+  outputs.upToDateWhen { false }
+}
+
+task copyPackage(type: Copy) {
+  from "package"
+  into "${buildDir}/confluent-package/swim-confluent-connector"
+}
+
+task copyLicense(type: Copy) {
+  from "."
+  include "LICENSE"
+  into "${buildDir}/confluent-package/swim-confluent-connector/doc"
+}
+
+task copyLibs(type: Copy) {
+  from project.tasks.jar.outputs
+  from configurations.runtimeClasspath
+  include "swim*.jar"
+  into "${buildDir}/confluent-package/swim-confluent-connector/lib"
+}
+
+task createConfluentPackage(type: Zip) {
+  mkdir "${buildDir}/confluent-package/swim-confluent-connector"
+  dependsOn copyPackage
+  dependsOn copyLicense
+  dependsOn copyLibs
+  archiveFileName = "swim-confluent-connector.zip"
+  destinationDirectory = layout.buildDirectory.dir("${buildDir}")
+  from layout.buildDirectory.dir("${buildDir}/confluent-package")
+}

@@ -1,0 +1,35 @@
+{
+  "name" : "swim-kafka-connect",
+  "version" : "0.1",
+  "title" : "Swim Kafka Connect",
+  "description" : "Send Kafka Data to a Swim App",
+  "owner" : {
+    "username" : "swim",
+    "type" : "organization",
+    "name" : "Swim Inc.",
+    "url" : "https://swim.dev/",
+    "logo" : "assets/marlin-swim-blue.svg"
+  },
+  "support" : {
+    "summary" : "Contact developers@swim.inc for support requests",
+    "url" : "https://github.com/swimos/swim-kafka-connect",
+    "provider_name" : "Swim Inc."
+  },
+  "tags" : [ "swim", "sink" ],
+  "requirements" : [ "Confluent Platform 4.x or later", "Apache Kafka 1.x or later" ],
+  "features" : {
+    "supported_encodings" : [ "any" ],
+    "single_message_transforms" : false,
+    "confluent_control_center_integration" : true,
+    "kafka_connect_api" : true
+  },
+  "documentation_url" : "https://github.com/swimos/swim-kafka-connect/blob/master/README.md",
+  "source_url" : "https://github.com/swimos/swim-kafka-connect",
+  "docker_image" : { },
+  "license" : [ {
+    "name" : "Apache License 2.0",
+    "url" : "https://www.apache.org/licenses/LICENSE-2.0"
+  } ],
+  "component_types" : [ "sink" ],
+  "release_date" : "2022-06-16"
+}

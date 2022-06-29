@@ -1,0 +1,24 @@
+plugins {
+  id 'java-library'
+  id 'application'
+}
+
+group = 'org.swimos'
+description = 'Test Swim App for Kafka Connector'
+version = property('swim.version')
+ext.swimVersion = project.property('swim.version')
+mainClassName = 'swim.app.AppPlane'
+
+dependencies {
+  api group: 'org.swimos', name: 'swim-api', version: swimVersion
+  api group: 'org.swimos', name: 'swim-server', version: swimVersion
+}
+
+repositories {
+  mavenCentral()
+}
+
+compileJava {
+  options.compilerArgs += ['-Xlint:all']
+  options.encoding = 'UTF-8'
+}
