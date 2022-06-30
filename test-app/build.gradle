@@ -22,3 +22,19 @@ compileJava {
   options.compilerArgs += ['-Xlint:all']
   options.encoding = 'UTF-8'
 }
+
+task copyResources(type: Copy) {
+  from project.tasks.jar.outputs
+  from configurations.runtimeClasspath
+  into "${buildDir}/docker/libs"
+}
+
+task copyDockerfile(type: Copy) {
+  from "docker/Dockerfile"
+  into "${buildDir}/docker"
+}
+
+task dockerBuildImage() {
+  dependsOn copyResources
+  dependsOn copyDockerfile
+}
