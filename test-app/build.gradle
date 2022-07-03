@@ -34,7 +34,7 @@ task copyDockerfile(type: Copy) {
   into "${buildDir}/docker"
 }
 
-task dockerBuildImage() {
+task createDockerPackage() {
   dependsOn copyResources
   dependsOn copyDockerfile
 }

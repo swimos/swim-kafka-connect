@@ -43,28 +43,28 @@ test {
 
 task copyPackage(type: Copy) {
   from "package"
-  into "${buildDir}/confluent-package/swim-confluent-connector"
+  into "${buildDir}/swim-kafka-connect/swim-kafka-connect"
 }
 
 task copyLicense(type: Copy) {
   from "."
   include "LICENSE"
-  into "${buildDir}/confluent-package/swim-confluent-connector/doc"
+  into "${buildDir}/swim-kafka-connect/swim-kafka-connect/doc"
 }
 
 task copyLibs(type: Copy) {
   from project.tasks.jar.outputs
   from configurations.runtimeClasspath
   include "swim*.jar"
-  into "${buildDir}/confluent-package/swim-confluent-connector/lib"
+  into "${buildDir}/swim-kafka-connect/swim-kafka-connect/lib"
 }
 
-task createConfluentPackage(type: Zip) {
-  mkdir "${buildDir}/confluent-package/swim-confluent-connector"
+task createKafkaConnectPackage(type: Zip) {
+  mkdir "${buildDir}/swim-kafka-connect/swim-kafka-connect"
   dependsOn copyPackage
   dependsOn copyLicense
   dependsOn copyLibs
-  archiveFileName = "swim-confluent-connector.zip"
+  archiveFileName = "swim-kafka-connect.zip"
   destinationDirectory = layout.buildDirectory.dir("${buildDir}")
-  from layout.buildDirectory.dir("${buildDir}/confluent-package")
+  from layout.buildDirectory.dir("${buildDir}/swim-kafka-connect")
 }

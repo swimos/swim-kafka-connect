@@ -1,2 +1,2 @@
-# Swim Kafka Connector
+# Swim Kafka Connect Library
 
