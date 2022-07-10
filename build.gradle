@@ -6,7 +6,8 @@ group = 'org.swimos'
 description = 'Swim Kafka Connector'
 version = property('application.version')
 ext.swimVersion = project.property('swim.version')
-
+sourceCompatibility = 11
+targetCompatibility = 11
 
 dependencies {
   api group: 'org.swimos', name: 'swim-api', version: swimVersion

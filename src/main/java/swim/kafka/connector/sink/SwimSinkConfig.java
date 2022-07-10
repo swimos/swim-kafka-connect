@@ -106,13 +106,13 @@ public class SwimSinkConfig {
     final ConfigDef configDef = new ConfigDef();
 
     configDef.define(SWIM_HOST_URI_PROP, ConfigDef.Type.STRING, ConfigDef.NO_DEFAULT_VALUE,
-          SWIM_HOST_URI_VALIDATOR, ConfigDef.Importance.HIGH, "The Host Uri of the Swim Application");
+          SWIM_HOST_URI_VALIDATOR, ConfigDef.Importance.HIGH, "The Host URI of the Swim Application");
 
     configDef.define(SWIM_AGENT_URI_PATTERN_PROP, ConfigDef.Type.STRING, ConfigDef.NO_DEFAULT_VALUE,
-          SWIM_AGENT_URI_PATTERN_VALIDATOR, ConfigDef.Importance.HIGH, "The Web Agent Uri Pattern");
+          SWIM_AGENT_URI_PATTERN_VALIDATOR, ConfigDef.Importance.HIGH, "The Web Agent URI Pattern");
 
     configDef.define(SWIM_LANE_URI_PROP, ConfigDef.Type.STRING, ConfigDef.NO_DEFAULT_VALUE,
-          SWIM_LANE_URI_VALIDATOR, ConfigDef.Importance.HIGH, "The Lane Uri of the Web Agent");
+          SWIM_LANE_URI_VALIDATOR, ConfigDef.Importance.HIGH, "The Lane URI of the Web Agent");
 
     configDef.define(SWIM_USE_VALUE_FIELD_FOR_AGENT_ID_PROP, ConfigDef.Type.BOOLEAN, false,
           ConfigDef.Importance.HIGH, "Whether to use the key field or value field of the Sink Record to extract the Id");

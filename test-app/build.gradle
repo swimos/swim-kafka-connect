@@ -7,6 +7,8 @@ group = 'org.swimos'
 description = 'Test Swim App for Kafka Connector'
 version = property('swim.version')
 ext.swimVersion = project.property('swim.version')
+sourceCompatibility = 11
+targetCompatibility = 11
 mainClassName = 'swim.app.AppPlane'
 
 dependencies {
