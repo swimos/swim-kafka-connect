@@ -1,8 +1,8 @@
 {
   "name" : "swim-kafka-connect",
-  "version" : "0.1",
+  "version" : "3.11.0",
   "title" : "Swim Kafka Connect",
-  "description" : "Send Kafka Data to a Swim App",
+  "description" : "The Swim Kafka Connect library acts as a bridge between Kafka and Swim applications. This library should be configured to send messages generated from Kafka topics to a specified Swim application.\n This library is built off of the Kafka Connect framework.",
   "owner" : {
     "username" : "swim",
     "type" : "organization",
